@@ -1,0 +1,36 @@
+#!/bin/bash
+
+#MAKE SURE YOU HAVE A VALID INTERNET CONNECTION FOR THIS SETUP TO WORK | TEST WITH "ping google.com"
+
+#Setting the Keymap | If you dont mind using the US Keyboard Configuration leave this the next line commented out | Find the keymap you want beforehand with "ls /usr/share/kbd/keymaps/**/*.mapz.gz"
+#loadkeys YOUR_KEY_MAP
+
+timedatectl set-ntp true
+fdisk /dev/sda
+
+sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${TGTDEV}
+	g
+	n
+	
+	
+	+550M
+	n
+	
+	
+	+2G
+	n
+	
+	
+	
+	t
+	1
+	1
+	t
+	2
+	19
+	w
+EOF
+
+
+#
+#
