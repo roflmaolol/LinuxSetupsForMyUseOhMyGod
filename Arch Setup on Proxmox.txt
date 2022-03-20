@@ -1,3 +1,4 @@
+#DO NOT TRY TO RUN THIS FILE
 #UEFI SETUP
 #IN SHORT -> IN THE UEFI MANAGER: DISABLE SECURE BOOT | ADD <EFI>/<BOOT>/BOOTx64.EFI TO BOOT OPTIONS AS ARCHBOOT | SET ARCHBOOT TO TOP OF BOOT PRIOROTY | RESET
 
@@ -18,20 +19,25 @@ Press Esc two time to go back to the main page
 Select Reset
 
 #ARCH SETUP
+#START THE FIRST PART
+#IN SHORT: DOWNLOAD GIT | git clone https://github.com/roflmaolol/LinuxSetupsForMyUseOhMyGod | CH INTO LinuxSetupsForMyUseOhMyGod AND chmod a=rwx archAutoSetup1 | ./archAutoSetup1
+#AFTER THAT
+#START THE SECOND PART
+#DOWNLOAD GIT | git clone https://github.com/roflmaolol/LinuxSetupsForMyUseOhMyGod | CH INTO LinuxSetupsForMyUseOhMyGod AND chmod a=rwx archAutoSetup2 | ./archAutoSetup2
 
 #Download git
-
 pacman -Sy git
 
 #Clone Github Repository
-
 git clone https://github.com/roflmaolol/LinuxSetupsForMyUseOhMyGod
 
 cd LinuxSetupsForMyOhMyGod
 
-chmod a=rwx archAutoSetup1
+#Give the bash file all the rights
+chmod a=rwx archAutoSetup
 
-./archAutoSetup1
+#Start the batch File
+./archAutoSetup
 
 #WAIT UNTIL ITS DONE
 
