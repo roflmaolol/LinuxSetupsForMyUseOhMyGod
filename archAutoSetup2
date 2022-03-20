@@ -4,7 +4,7 @@
 
 timedatectl set-ntp true
 
-sed -e 's/\s*\([\+0-9a-zA-Z]*/\l/' << EOF | fdisk ${TGTDEV}
+fdisk /dev/sda << EEOF
 	g
 	n
 	
@@ -25,4 +25,4 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*/\l/' << EOF | fdisk ${TGTDEV}
 	2
 	19
 	w
-EOF
+EEOF
