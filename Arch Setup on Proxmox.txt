@@ -43,7 +43,7 @@ chmod a=rwx archAutoSetup1
 #REPEAT BUT NOW WITH THE SECOND FILE
 
 #Download git
-pacman -Sy git
+pacman -S git
 
 #Clone Github Repository
 git clone https://github.com/roflmaolol/LinuxSetupsForMyUseOhMyGod
