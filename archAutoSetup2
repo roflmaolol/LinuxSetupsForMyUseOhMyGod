@@ -15,6 +15,9 @@ hwclock --systohc
 sed -i 's/#en_US.UTF8 UTF8/en_US.UTF8 UTF8;/' /etc/locale.gen
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL;/' /etc/locale.gen
 
+#Warning not to fuck something up from now on
+echo -e "####################\n#     IMPORTANT    #\n# FROM NOW ON TYPE #\n#    EVERYTHING    #\n#     PERFECTLY    #\n#IF YOU HAVE A TYPO#\n#YOU HAVE TO REPEAT#\n#     THE COMMAND    #\n#      YOURSELF      #\n####################"
+
 #setting the hostname
 echo --TYPE IN YOUR HOSTNAME--IF YOU DONT CARE JUST TYPE ARCH--
 read hostname
