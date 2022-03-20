@@ -29,9 +29,9 @@ git clone https://github.com/roflmaolol/LinuxSetupsForMyUseOhMyGod
 
 cd LinuxSetupsForMyOhMyGod
 
-chmod a=rwx archAutoSetup
+chmod a=rwx archAutoSetup1
 
-./archAutoSetup
+./archAutoSetup1
 
 #WAIT UNTIL ITS DONE
 
