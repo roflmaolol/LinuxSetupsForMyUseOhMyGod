@@ -16,7 +16,7 @@ sed -i 's/#en_US.UTF8 UTF8/en_US.UTF8 UTF8;/' /etc/locale.gen
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL;/' /etc/locale.gen
 
 #setting the hostname
-echo TYPE IN YOUR HOSTNAME (IF YOU DONT CARE JUST TYPE ARCH)
+echo TYPE IN YOUR HOSTNAME IF YOU DONT CARE JUST TYPE ARCH
 read 
 read hostname
 echo $hostname > /etc/hostname
