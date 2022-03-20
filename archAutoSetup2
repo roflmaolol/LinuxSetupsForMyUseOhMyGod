@@ -17,7 +17,6 @@ sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL;/' /etc/locale.gen
 
 #setting the hostname
 echo TYPE IN YOUR HOSTNAME IF YOU DONT CARE JUST TYPE ARCH
-read 
 read hostname
 echo $hostname > /etc/hostname
 
@@ -32,7 +31,7 @@ passwd root
 
 echo TYPE THE NAME OF THE NEW USER
 read UserName
-useradd -m $UserName
+useradd -m --badname $UserName
 echo TYPE THE PASSWORD OF THE NEW USER
 passwd $UserName
 
