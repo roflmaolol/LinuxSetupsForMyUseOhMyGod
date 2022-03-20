@@ -1,0 +1,37 @@
+#UEFI SETUP
+#IN SHORT -> IN THE UEFI MANAGER: DISABLE SECURE BOOT | ADD <EFI>/<BOOT>/BOOTx64.EFI TO BOOT OPTIONS AS ARCHBOOT | SET ARCHBOOT TO TOP OF BOOT PRIOROTY | RESET
+
+Make new VM with Linux Iso
+
+Start the Vm and den quickly and rapidly press Esc to open UEFI Manager
+
+Then go to Device Manager -> Secure Boot Configuration -> Uncheck "Attempt Secure Boot" -> Reset Secure Boot Keys
+
+Go back two times by pressing Esc two times
+
+Select Boot Maintenance Manager -> Boot Options -> Add Boot Option -> Press Enter -> Select <EFI> -> <BOOT> -> BOOTx64.EFI -> type "archboot" for "Input the Description" -> Commit Changes and Exit
+
+Select Change Boot Order -> Press Enter -> Navigate to archboot with arrow keys the press +/- to move it up/down and move it to the top -> Commit Changes and Exit
+
+Press Esc two time to go back to the main page
+
+Select Reset
+
+#ARCH SETUP
+
+#Download git
+
+pacman -Sy git
+
+#Clone Github Repository
+
+git clone https://github.com/roflmaolol/LinuxSetupsForMyUseOhMyGod
+
+cd LinuxSetupsForMyOhMyGod
+
+chmod a=rwx archAutoSetup
+
+./archAutoSetup
+
+#WAIT UNTIL ITS DONE
+
