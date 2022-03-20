@@ -16,7 +16,7 @@ sed -i 's/#en_US.UTF8 UTF8/en_US.UTF8 UTF8;/' /etc/locale.gen
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL;/' /etc/locale.gen
 
 #setting the hostname
-echo TYPE IN YOUR HOSTNAME IF YOU DONT CARE JUST TYPE ARCH
+echo --TYPE IN YOUR HOSTNAME--IF YOU DONT CARE JUST TYPE ARCH--
 read hostname
 echo $hostname > /etc/hostname
 
@@ -26,13 +26,13 @@ unset hostname
 
 #Setting the Users up
 
-echo TYPE THE PASSWORD FOR THE ROOT
+echo --TYPE THE PASSWORD FOR THE ROOT--
 passwd root
 
-echo TYPE THE NAME OF THE NEW USER
+echo --TYPE THE NAME OF THE NEW USER--
 read UserName
 useradd -m --badname $UserName
-echo TYPE THE PASSWORD OF THE NEW USER
+echo --TYPE THE PASSWORD OF THE NEW USER--
 passwd $UserName
 
 #adding the new User to some groups
