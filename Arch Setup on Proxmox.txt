@@ -33,11 +33,50 @@ git clone https://github.com/roflmaolol/LinuxSetupsForMyUseOhMyGod
 
 cd LinuxSetupsForMyOhMyGod
 
-#Give the bash file all the rights
-chmod a=rwx archAutoSetup
+#Give the first bash file all the rights
+chmod a=rwx archAutoSetup1
 
-#Start the batch File
-./archAutoSetup
+#Start the first batch File
+./archAutoSetup1
 
 #WAIT UNTIL ITS DONE
+#REPEAT BUT NOW WITH THE SECOND FILE
+
+#Download git
+pacman -Sy git
+
+#Clone Github Repository
+git clone https://github.com/roflmaolol/LinuxSetupsForMyUseOhMyGod
+
+cd LinuxSetupsForMyOhMyGod
+
+#Give the second bash second file all the rights
+chmod a=rwx archAutoSetup2
+
+#Start the second batch File
+./archAutoSetup2
+
+#NOW TOU HAVE TO TYPE IN A PASSWORD FOR THE ROOT USER
+_password_for_the_root_user_
+#REPEAT IT
+_password_for_the_root_user_
+
+#NOW TYPE IN A NAME FOR A NEW USER
+_name_for_new_user_
+#NOW TYPE IN THE PASSWORD FOR THE NEW USER
+_password_for_new_user_
+#REPEAT IT
+
+
+
+
+
+
+
+
+
+
+
+
+
 
