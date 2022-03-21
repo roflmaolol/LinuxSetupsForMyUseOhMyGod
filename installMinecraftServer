@@ -23,7 +23,7 @@ echo "--ENTER THE MINIMUM RAM FOR THE SERVER IN MEGABYTES--"
 read Xms
 echo "--MAKING THE Start.sh FILE--"
 
-echo java -"$Xmx"M -"$Xms"M -jar server.jar nogui >> Start.sh
+echo java -Xmx"$Xmx"M -Xms"$Xms"M -jar server.jar nogui >> Start.sh
 
 #Making own Eula file to avoid the Server shutting down
 echo "eula=true" >> eula.txt
