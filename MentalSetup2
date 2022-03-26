@@ -7,7 +7,7 @@
 
 #SECOND PART OF THE SETUP
 
-TIME=5
+TIME=2
 
 #Setting the Timezone
 ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
@@ -54,5 +54,7 @@ grub-install
 grub-mkconfig -o /boot/grub/grub.cfg
 
 rm MentalSetup2
+
+arch-chroot /mnt
 
 #echo --THE SETUP IS NOW COMPLETE--YOU CAN NOW DO WHATEVER THE FUCK YOU WANT--
