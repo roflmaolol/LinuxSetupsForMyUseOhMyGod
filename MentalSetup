@@ -1,0 +1,73 @@
+#!/bin/bash
+
+#INSPIRED BY MENTAL OUTLAW
+
+#FOLLOWED THIS TUTORIAL ALONG: https://www.youtube.com/watch?v=rUEnS1zj1DM
+#MAKE SURE YOU HAVE A VALID INTERNET CONNECTION FOR THIS SETUP TO WORK | TEST WITH "ping google.com"
+
+#FIRST PART OF THE SETUP
+
+echo "SET THE AMOUNT OF TIME TO WAIT IN BETWEEN STEPS"
+read TIME
+
+#Setting the system Time
+timedatectl set-ntp true
+
+echo "time set"
+sleep $TIME
+
+#Partitioning the Drives
+#Look the commands up with fdisk -> m
+fdisk /dev/sda << EOF
+	g
+	n
+	
+	
+	+128M
+	n
+	
+	
+	
+	t	
+	1
+	1
+	w
+EOF
+
+#Making the Storage?
+
+echo "fdisk done"
+sleep $TIME
+
+mkfs.ext4 /dev/sda1
+mkfs.ext4 /dev/sda2
+
+echo "ext4 done"
+sleep $TIME
+
+mount /dev/sda2 /mnt
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot
+
+echo "mounting done"
+sleep $TIME
+
+#Downlaoding essentials like linuxkernel, etc.
+pacstrap /mnt base linux linux-firmware
+
+echo "pacstrap done"
+sleep $TIME
+
+genfstab -U /mnt >> /mnt/etc/fstab
+
+echo "generated fstab"
+sleep $TIME
+
+cp MentalSetup2 /mnt
+chmod a=rwx /mnt/MentalSetup2
+
+rm -r LinuxSetupsForMyUseOhMyGod
+
+arch-chroot /mnt ./MentalSetup2
+
+

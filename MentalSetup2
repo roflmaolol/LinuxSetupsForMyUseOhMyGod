@@ -1,0 +1,58 @@
+#!/bin/bash
+
+#INSPIRED BY MENTAL OUTLAW
+
+#FOLLOWED THIS TUTORIAL ALONG: https://www.youtube.com/watch?v=rUEnS1zj1DM
+#MAKE SURE YOU HAVE A VALID INTERNET CONNECTION FOR THIS SETUP TO WORK | TEST WITH "ping google.com"
+
+#SECOND PART OF THE SETUP
+
+TIME=5
+
+#Setting the Timezone
+ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+
+echo "set localtime"
+sleep $TIME
+
+#Setting the locale and then the wheelgroup to every permission
+sed -i 's/#en_US.UTF8 UTF8/en_US.UTF8 UTF8;/' /etc/locale.gen
+
+echo "set language"
+sleep $TIME
+
+#Warning not to fuck something up from now on
+echo -e "####################\n#     IMPORTANT    #\n# FROM NOW ON TYPE #\n#    EVERYTHING    #\n#     PERFECTLY    #\n#IF YOU HAVE A TYPO#\n#YOU HAVE TO REPEAT#\n#    THE COMMAND   #\n#     YOURSELF     #\n####################"
+
+#setting the hostname
+echo --TYPE IN YOUR HOSTNAME--IF YOU DONT CARE JUST TYPE ARCH--
+read hostname
+echo $hostname > /etc/hostname
+
+echo -e "127.0.0.1     localhost\n::1       localhost\n127.0.1.1     $hostname.localdomain     $hostname" > /etc/hosts
+
+unset hostname
+
+echo "set hostname"
+sleep $TIME
+
+#Setting the Users up
+
+echo --TYPE THE PASSWORD FOR THE ROOT--
+passwd
+
+echo "set password for root"
+sleep $TIME
+
+#installing essential Stuff
+pacman -S grub<< EOF
+	y
+EOF
+
+#I dont know...
+grub-install
+grub-mkconfig -o /boot/grub/grub.cfg
+
+rm MentalSetup2
+
+#echo --THE SETUP IS NOW COMPLETE--YOU CAN NOW DO WHATEVER THE FUCK YOU WANT--
