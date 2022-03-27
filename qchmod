@@ -2,9 +2,8 @@
 
 cat <<-EOF > /bin/qchmod
 	#!/bin/bash
-	while getopts h:t: flag
-	do
-		case "\${flag}" in
+	while getopts 'ht:' flag; do
+		case "\$flag" in
 		h) echo "the rights are a=rwx. You can call multiple Files";;
 		t) echo "this test works";;
 		esac
