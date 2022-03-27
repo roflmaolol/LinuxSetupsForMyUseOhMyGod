@@ -1,13 +1,14 @@
 #!/bin/bash
 
 #Setting the Timezone
-ln -sf /usr/share/zoneinfo/Europe/Berlin/etc/localtime
+ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
 #Syncing Systemclock?
 hwclock --systohc
 
-#Setting the locale and then the wheelgroup to every permission
+#Setting the locale
 sed -i 's/#en_US.UTF8 UTF8/en_US.UTF8 UTF8;/' /etc/locale.gen
+locale-gen
 
 #Warning not to fuck something up from now on
 echo -e "####################\n#     IMPORTANT    #\n# FROM NOW ON TYPE #\n#    EVERYTHING    #\n#     PERFECTLY    #\n#IF YOU HAVE A TYPO#\n#YOU HAVE TO REPEAT#\n#    THE COMMAND   #\n#     YOURSELF     #\n####################"
