@@ -23,7 +23,7 @@ EOF
 
 #Making the Storage?
 
-mkfs.fat -F32 /dev/sda1
+mkfs.ext4 /dev/sda1
 mkfs.ext4 /dev/sda2
 
 mount /dev/sda2 /mnt
@@ -37,7 +37,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 chmod a=rwx aAS_exp2_nr finisher
 cp aAS_exp2_nr /mnt
 rm aAS_exp2_nr
-cp finisher ../
+rm aAS_exp_nr
 cp -r ../linuxsetupsformyuseohmygod /mnt
 rm -r ../linuxsetupsformyuseohmygod
 
