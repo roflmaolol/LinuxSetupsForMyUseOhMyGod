@@ -34,6 +34,9 @@ grub-mkconfig -o /boot/grub/grub.cfg
 rm aAS_exp2
 
 until passwd root
+do
+	echo --passwords dont match!--
+done
 
 exit
 
