@@ -13,10 +13,10 @@ function cprint()
 #logger to write to the log.txt file
 function logg_er()
 {
-	for word in $@
-	do
-		echo $word >> log.txt
-	done
+	#for word in $@
+	#do
+		echo $1 >> log.txt
+	#done
 }
 
 #tester to print out if a function hast failed
