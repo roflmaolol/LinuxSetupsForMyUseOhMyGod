@@ -36,9 +36,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 chmod a=rwx aAS_exp2
 cp aAS_exp2 /mnt
-rm aAS_exp2
-rm aAS_exp
-cd ..
-cp linuxsetupsformyuseohmygod /mnt
+cp -r ../linuxsetupsformyuseohmygod /mnt
+rm -r ../linuxsetupsformyuseohmygod
 
 arch-chroot /mnt ./aAS_exp2

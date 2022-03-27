@@ -44,6 +44,8 @@ rm aAS_exp2
 systemctl start NetworkManager
 systemctl enable NetworkManager
 
+exit
+
 reboot
 
 #echo --THE SETUP IS NOW COMPLETE--YOU CAN NOW DO WHATEVER THE FUCK YOU WANT--
