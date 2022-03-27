@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# aAS2 = archAutoSetup2
+
+#Setting the Timezone
+ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+
+#Syncing Systemclock?
+hwclock --systohc
+
+#Setting the locale
+sed -i 's/#en_US.UTF8 UTF8/en_US.UTF8 UTF8;/' /etc/locale.gen
+locale-gen
+
+#setting the hostname
+hostname=arch
+echo $hostname > /etc/hostname
+echo -e "127.0.0.1     localhost\n::1       localhost\n127.0.1.1     $hostname.localdomain     $hostname" > /etc/hosts
+unset hostname
+
+#installing essential Stuff
+pacman -S grub efibootmgr networkmanager<< EOF
+	y
+EOF
+
+#I dont know...
+mkdir /boot/EFI
+mount /dev/sda1 /boot/EFI
+grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+grub-mkconfig -o /boot/grub/grub.cfg
+
+#cleaning up
+rm aAS2
+
+#setting the root password | otherwise you wont be able to log in after reboot
+echo --Set the root Password--
+until passwd root
+do
+	echo --passwords dont match!--
+done
+
+#exiting the chroot | continuing with aAS_exp_nr
+exit

@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# aAS = archAutoSetup
+
+#Setting the system Time
+timedatectl set-ntp true
+
+#Partitioning the Drives
+#Look the commands up with fdisk -> m
+fdisk /dev/sda << EOF
+	g
+	n
+	
+	
+	+550M
+	n
+	
+	
+	
+	t	
+	1
+	1
+	w
+EOF
+
+#Making the Storage?
+
+#IT HAS TO BE FAT32 | OTEHRWISE IT WONT BOOT
+mkfs.fat -F32 /dev/sda1
+mkfs.ext4 /dev/sda2
+
+mount /dev/sda2 /mnt
+
+#Downlaoding essentials like linuxkernel, etc.
+pacstrap /mnt base linux linux-firmware
+
+#generate fstab
+genfstab -U /mnt >> /mnt/etc/fstab
+
+#giving the next bash script all the rights and cleaning up
+chmod a=rwx aAS2
+cp aAS2 /mnt
+rm aAS2
+rm aAS
+cp -r ../linuxsetupsformyuseohmygod /mnt
+rm -r ../linuxsetupsformyuseohmygod
+
+#starting the next bash script in chroot
+arch-chroot /mnt ./aAS2
+
+#setting up the NetworkManager
+systemctl start NetworkManager
+systemctl enable NetworkManager
+
+#rebooting into finished enviroment
+reboot
