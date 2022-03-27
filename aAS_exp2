@@ -28,7 +28,7 @@ echo --TYPE THE PASSWORD FOR THE ROOT--
 passwd root
 
 #installing essential Stuff
-pacman -S sudo grub efibootmgr dosfstools os-prober mtools<< EOF
+pacman -S grub NetworkManager<< EOF
 	y
 EOF
 
@@ -38,4 +38,11 @@ mount /dev/sda1 /boot/EFI
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
-echo --THE SETUP IS NOW COMPLETE--YOU CAN NOW DO WHATEVER THE FUCK YOU WANT--
+rm aAS_exp2
+
+systemctl start NetworkManager
+systemctl enable NetworkManager
+
+reboot
+
+#echo --THE SETUP IS NOW COMPLETE--YOU CAN NOW DO WHATEVER THE FUCK YOU WANT--
