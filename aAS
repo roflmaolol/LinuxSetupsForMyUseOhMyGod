@@ -79,8 +79,6 @@ mv aAS2 /mnt
 rm aAS
 cp -r ../linuxsetupsformyuseohmygod /mnt
 rm -r ../linuxsetupsformyuseohmygod
-#moving the logfile
-cp
 cprint 6 "cleaned up"
 
 #starting the next bash script in chroot
