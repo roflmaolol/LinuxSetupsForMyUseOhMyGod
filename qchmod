@@ -1,0 +1,17 @@
+#!/bin/bash
+
+cat <<-EOF > /bin/qchmod
+	while getopts h:t: flag
+	do
+		case "${flag}" in
+		h) echo "the rights are a=rwx. You can call multiple Files";;
+		t) echo "this test works";;
+		esac
+	done
+	
+	for FILE in "$@"
+	do
+		chmod a=rwx $FILE
+	done
+EOF
+
