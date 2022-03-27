@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cat <<-EOF > /bin/qchmod
+	#!/bin/bash
 	while getopts h:t: flag
 	do
 		case "${flag}" in
