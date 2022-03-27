@@ -44,6 +44,6 @@ pacstrap /mnt base linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 
 chmod a=rwx aAS_Exp2
-cp archAutoSetup2 /mnt
+cp aAS_Exp2 /mnt
 
-arch-chroot /mnt ./archAutoSetup2
+arch-chroot /mnt ./aAS_Exp2
