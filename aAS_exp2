@@ -41,6 +41,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 rm aAS_exp2
 
+exit
+
 sh /root/finisher
 
 #echo --THE SETUP IS NOW COMPLETE--YOU CAN NOW DO WHATEVER THE FUCK YOU WANT--
