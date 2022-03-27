@@ -32,6 +32,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 #cleaning up
 rm aAS2
 
+#setting up the NetworkManager
+systemctl start NetworkManager
+systemctl enable NetworkManager
+
 #setting the root password | otherwise you wont be able to log in after reboot
 echo --Set the root Password--
 until passwd root

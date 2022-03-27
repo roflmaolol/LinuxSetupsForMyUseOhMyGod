@@ -48,9 +48,5 @@ rm -r ../linuxsetupsformyuseohmygod
 #starting the next bash script in chroot
 arch-chroot /mnt ./aAS2
 
-#setting up the NetworkManager
-systemctl start NetworkManager
-systemctl enable NetworkManager
-
 #rebooting into finished enviroment
 reboot
