@@ -2,15 +2,48 @@
 
 # aAS2 = archAutoSetup2
 
+#cprint function to echo with color where the first part changes the color
+function cprint()
+{
+	tput setaf $1	#change to chosen color
+	echo $2
+	tput setaf 9	#change back to white
+}
+
+#logger to write to the log.txt file
+function logg_er()
+{
+	#for word in $@
+	#do
+		echo $1 >> log.txt
+	#done
+}
+
+#tester to print out if a function hast failed
+function test_er()
+{
+	if [ $? == 0 ]
+	then
+		cprint 2 "OK $1"
+		logg_er "[ OK    ]   $1"
+	else
+		cprint 1 "ERROR in $1"
+		logg_er "[ ERROR ]   $1"
+	fi
+}
+
 #Setting the Timezone
 ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+test_er localtime
 
 #Syncing Systemclock?
 hwclock --systohc
+test_er hwclock
 
 #Setting the locale
 sed -i 's/#en_US.UTF8 UTF8/en_US.UTF8 UTF8;/' /etc/locale.gen
 locale-gen
+test_er locale-gen
 
 #setting the hostname
 hostname=arch
@@ -26,8 +59,11 @@ EOF
 #I dont know...
 mkdir /boot/EFI
 mount /dev/sda1 /boot/EFI
+test_er boot_mount
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+test_er grub-install
 grub-mkconfig -o /boot/grub/grub.cfg
+test_er grub-mkconfig
 
 #cleaning up
 rm aAS2
@@ -35,10 +71,12 @@ rm aAS2
 #setting up the NetworkManager
 systemctl start NetworkManager
 systemctl enable NetworkManager
+test_er NetworkManager
 
 #setting the root password | otherwise you wont be able to log in after reboot
 
 echo 'root:root' | chpasswd
+test_er root_password
 
 #echo --Set the root Password--
 #until passwd root

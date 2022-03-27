@@ -75,14 +75,14 @@ test_er genfstab
 
 #giving the next bash script all the rights and cleaning up
 chmod a=rwx aAS2
-mv aAS2 /mnt
-rm aAS
+#mv aAS2 /mnt
+#rm aAS
 cp -r ../linuxsetupsformyuseohmygod /mnt
 rm -r ../linuxsetupsformyuseohmygod
 cprint 6 "cleaned up"
 
 #starting the next bash script in chroot
-arch-chroot /mnt ./aAS2
+arch-chroot /mnt /linuxsetupsformyuseohmygod/aAS2
 
 #rebooting into finished enviroment
 reboot
