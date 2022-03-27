@@ -42,3 +42,5 @@ cp -r ../linuxsetupsformyuseohmygod /mnt
 rm -r ../linuxsetupsformyuseohmygod
 
 arch-chroot /mnt ./aAS_exp2
+
+sh /root/finisher
