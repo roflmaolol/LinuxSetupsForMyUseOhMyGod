@@ -38,7 +38,7 @@ systemctl enable NetworkManager
 
 #setting the root password | otherwise you wont be able to log in after reboot
 
-echp 'root:root' | chpasswd
+echo 'root:root' | chpasswd
 
 #echo --Set the root Password--
 #until passwd root
