@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 #Setting the system Time
 timedatectl set-ntp true
@@ -11,10 +11,6 @@ fdisk /dev/sda << EOF
 	
 	
 	+550M
-	n	#
-		#
-		#
-	+2G #
 	n
 	
 	
@@ -22,20 +18,15 @@ fdisk /dev/sda << EOF
 	t	
 	1
 	1
-	t	#
-	2	#
-	19	#
 	w
 EOF
 
 #Making the Storage?
 
 mkfs.fat -F32 /dev/sda1
-mkswap /dev/sda2	#
-swapon /dev/sda2	#
-mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda2
 
-mount /dev/sda3 /mnt
+mount /dev/sda2 /mnt
 
 
 #Downlaoding essentials like linuxkernel, etc.
@@ -43,7 +34,7 @@ pacstrap /mnt base linux linux-firmware
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
-chmod a=rwx aAS_Exp2
-cp aAS_Exp2 /mnt
+chmod a=rwx aAS_exp2
+cp aAS_exp2 /mnt
 
-arch-chroot /mnt ./aAS_Exp2
+arch-chroot /mnt ./aAS_exp2
