@@ -15,3 +15,6 @@ cat <<-EOF > /bin/qchmod
 	done
 EOF
 
+chmod a=rwx /bin/qchmod
+
+echo "qchmod created in /bin/qchmod"
