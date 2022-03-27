@@ -41,12 +41,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 rm aAS_exp2
 
-exit
-
-systemctl start NetworkManager
-systemctl enable NetworkManager
-
-
-reboot
+sh /root/finisher
 
 #echo --THE SETUP IS NOW COMPLETE--YOU CAN NOW DO WHATEVER THE FUCK YOU WANT--

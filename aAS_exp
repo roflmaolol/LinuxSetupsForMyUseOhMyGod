@@ -34,8 +34,10 @@ pacstrap /mnt base linux linux-firmware
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
-chmod a=rwx aAS_exp2
+chmod a=rwx aAS_exp2 finisher
 cp aAS_exp2 /mnt
+rm aAS_exp2
+cp finisher ../
 cp -r ../linuxsetupsformyuseohmygod /mnt
 rm -r ../linuxsetupsformyuseohmygod
 

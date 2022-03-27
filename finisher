@@ -1,0 +1,6 @@
+#!/bin/bash
+
+systemctl start NetworkManager
+systemctl enable NetworkManager
+
+reboot
