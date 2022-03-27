@@ -22,7 +22,7 @@ function logg_er()
 #tester to print out if a function hast failed
 function test_er()
 {
-	if [ $? == 0]
+	if [ $? == 0 ]
 	then
 		cprint 2 OK $1
 		logg_er "[ OK    ]   $1"
