@@ -28,7 +28,7 @@ echo --TYPE THE PASSWORD FOR THE ROOT--
 passwd root
 
 #installing essential Stuff
-pacman -S grub NetworkManager<< EOF
+pacman -S grub efibootmgr networkmanager<< EOF
 	y
 EOF
 
