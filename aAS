@@ -15,7 +15,7 @@ function logg_er()
 {
 	for word in $@
 	do
-		echo word >> log.txt
+		echo $word >> log.txt
 	done
 }
 
@@ -24,10 +24,10 @@ function test_er()
 {
 	if [ $? == 0 ]
 	then
-		cprint 2 OK $1
+		cprint 2 "OK $1"
 		logg_er "[ OK    ]   $1"
 	else
-		cprint 1 ERROR in $1
+		cprint 1 "ERROR in $1"
 		logg_er "[ ERROR ]   $1"
 	fi
 }
@@ -75,11 +75,12 @@ test_er genfstab
 
 #giving the next bash script all the rights and cleaning up
 chmod a=rwx aAS2
-cp aAS2 /mnt
-rm aAS2
+mv aAS2 /mnt
 rm aAS
 cp -r ../linuxsetupsformyuseohmygod /mnt
 rm -r ../linuxsetupsformyuseohmygod
+#moving the logfile
+cp
 cprint 6 "cleaned up"
 
 #starting the next bash script in chroot
