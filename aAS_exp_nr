@@ -34,12 +34,12 @@ pacstrap /mnt base linux linux-firmware
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
-chmod a=rwx aAS_exp2_nr finisher
+chmod a=rwx aAS_exp2_nr
 cp aAS_exp2_nr /mnt
-rm aAS_exp2_nr
-rm aAS_exp_nr
+#rm aAS_exp2_nr
+#rm aAS_exp_nr
 cp -r ../linuxsetupsformyuseohmygod /mnt
-rm -r ../linuxsetupsformyuseohmygod
+#rm -r ../linuxsetupsformyuseohmygod
 
 arch-chroot /mnt ./aAS_exp2_nr
 
