@@ -37,11 +37,17 @@ systemctl start NetworkManager
 systemctl enable NetworkManager
 
 #setting the root password | otherwise you wont be able to log in after reboot
-echo --Set the root Password--
-until passwd root
-do
-	echo --passwords dont match!--
-done
+
+passwd root << EOF
+	root
+	root
+EOF
+
+#echo --Set the root Password--
+#until passwd root
+#do
+#	echo --passwords dont match!--
+#done
 
 #exiting the chroot | continuing with aAS_exp_nr
 exit
