@@ -2,6 +2,6 @@
 
 pacman -S jq
 
-cat <<-EOF > GetLocalDomainIP.sh
+cat <<-EOF > /bin/GetLocalDomainIP.sh
 	ip -json route get 8.8.8.8 | jq -r '.[].prefsrc'
 EOF
