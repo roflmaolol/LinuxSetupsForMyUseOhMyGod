@@ -33,6 +33,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 rm aAS_exp2
 
+until passwd root
+
 exit
 
 #echo --THE SETUP IS NOW COMPLETE--YOU CAN NOW DO WHATEVER THE FUCK YOU WANT--
