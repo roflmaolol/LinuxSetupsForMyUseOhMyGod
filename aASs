@@ -1,0 +1,95 @@
+#!/bin/bash
+
+# aASs = archAutoSetupswap (it makes a 6 gigabyte swap partition in the fdisk part)
+
+#cprint function to echo with color where the first part changes the color
+function cprint()
+{
+	tput setaf $1	#change to chosen color
+	echo $2
+	tput setaf 9	#change back to white
+}
+
+#logger to write to the log.txt file
+function logg_er()
+{
+	#for word in $@
+	#do
+		echo $1 >> log.txt
+	#done
+}
+
+#tester to print out if a function hast failed
+function test_er()
+{
+	if [ $? == 0 ]
+	then
+		cprint 2 "OK $1"
+		logg_er "[ OK    ]   $1"
+	else
+		cprint 1 "ERROR in $1"
+		logg_er "[ ERROR ]   $1"
+	fi
+}
+	
+#Setting the system Time
+timedatectl set-ntp true
+test_er time
+
+#Partitioning the Drives
+#Look the commands up with fdisk -> m
+fdisk /dev/sda << EOF
+	g
+	n
+	
+	
+	+550M
+	n
+	
+	
+	+6G
+	n
+	
+	
+	
+	t	
+	1
+	1
+	t
+	2
+	19
+	w
+EOF
+test_er fdisk
+
+#Making the Storage?
+#IT HAS TO BE FAT32 | OTEHRWISE IT WONT BOOT
+mkfs.fat -F32 /dev/sda1
+test_er mkfs.fat
+mkfs.ext4 /dev/sda2
+test_er mkfs.ext4
+
+mount /dev/sda2 /mnt
+test_er mnt
+
+#Downlaoding essentials like linuxkernel, etc.
+pacstrap /mnt base linux linux-firmware
+test_er pacstrap
+
+#generate fstab
+genfstab -U /mnt >> /mnt/etc/fstab
+test_er genfstab
+
+#giving the next bash script all the rights and cleaning up
+chmod a=rwx aAS2
+#mv aAS2 /mnt
+#rm aAS
+cp -r ../linuxsetupsformyuseohmygod /mnt
+rm -r ../linuxsetupsformyuseohmygod
+cprint 6 "cleaned up"
+
+#starting the next bash script in chroot
+arch-chroot /mnt /linuxsetupsformyuseohmygod/aAS2
+
+#rebooting into finished enviroment
+reboot
